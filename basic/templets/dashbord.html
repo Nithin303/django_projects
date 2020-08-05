@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/dashbord.css' %}" />
+    </head>
+    <body>
+    <div class="item login-box">
+                    {% for item in items %}
+                        <div>
+                            {% if item.state %}
+                            <h4 style="color:rgb(25, 0, 255);">{{item.name}}</h4>
+                            {% else %}
+                            <h4 style="color:rgb(112, 112, 112);">{{item.name}}</h4>
+                            {% endif %}
+                               <form action="value" method="post">
+                                    {% csrf_token %}
+                                    <a><button class="but" name="but" value="{{item.name}}/1">ON</button></a>
+                                    <a><button class="but off" name="but" value="{{item.name}}/0">OFF</button></a>
+                                </form>
+                        </div>
+                    {% endfor %}
+    </div>
+    </div>
+	<div id="tool-box">
+        <h3>Edit Panel</h3>
+        <form action = 'update' method='post'>
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Item Name"><br>
+            <input type="submit" value="ADD">
+            <input type="text" name="delete" placeholder="Item Name"><br>
+            <input type="submit" value="Delete">
+        </form>
+    </div>
+</body>        
+</html>

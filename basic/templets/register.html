@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="{% static 'css/register.css' %}" />
+    </head>
+    <body>
+        <form action = '/account/register/' method='post'>
+            {% csrf_token %}
+            <div id="login-box">
+                <div class="left">
+                <h1>Registeration Form</h1>
+                
+                <input type="text" name="first_name" placeholder="First-name">
+                <input type="text" name="last_name" placeholder="Last-name">
+                <input type="text" name="username" placeholder="Username">
+                <input type="text" name="email" placeholder="E-mail">
+                <input type="password" name="password1" placeholder="Password">
+                <input type="password" name="password2" placeholder="Retype password">
+                
+                <input type="submit" value="Register">
+                <div>
+                    {% for message in messages %}
+                    <h3 style="color:rgb(255, 0, 0);">{{message}}</h3>
+                    {% endfor %}
+                </div>
+                </div>
+
+            </div>
+        </form>
+    </body>>
+</html>
